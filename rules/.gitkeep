@@ -1,0 +1,2 @@
+# Reusable path-scoped rules — one `<rule>.md` per rule (optional `paths:` frontmatter).
+# Candidate to lift in: the coding-principles (Karpathy) rule. Add an index README when populated.

@@ -1,0 +1,2 @@
+# Reusable settings.json fragments — snippets to MERGE into a project's settings.json
+# (e.g. a SessionStart hook block), not whole files. Add an index README when populated.
