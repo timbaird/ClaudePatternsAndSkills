@@ -5,8 +5,13 @@ A reusable recipe that relocates a repo's Claude Code **auto-memory into the rep
 each machine pointed at it automatically, every session.
 
 > **Sub-pattern** = a composable building block referenced by full patterns rather than used alone.
-> Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-pattern.md) (and any single-repo setup
-> that wants portable memory). Placeholder: `<REPO>` = the target repo's root.
+> Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md) (and any single-repo
+> setup that wants portable memory). Sibling of
+> [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
+> [doco-setup](../doco-setup/doco-setup.md),
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md). Placeholder: `<REPO>` = the target repo's
+> root.
 
 ## Why
 
@@ -50,6 +55,11 @@ verify:
 | SessionStart hook | `settings.json` fragment (**merge**) | inline (below) | `<REPO>/.claude/settings.json` → `hooks.SessionStart` |
 | `settings.local.json` ignore | `.gitignore` line | inline (below) | `<REPO>/.claude/.gitignore` |
 | memory folder | folder (+ optional migrated files) | new / migration | `<REPO>/.claude/memory/` (committed) |
+
+> **Composes with [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md):** if you ran the
+> skeleton sub-pattern first, a base `settings.json` and `.claude/.gitignore` already exist — the
+> steps below *merge into* them. Run in either order; the create-if-missing / merge-if-present steps
+> handle both.
 
 ### SessionStart hook — `<REPO>/.claude/settings.json`
 If the file doesn't exist, create it as below. If it exists, merge the `hooks.SessionStart` block in

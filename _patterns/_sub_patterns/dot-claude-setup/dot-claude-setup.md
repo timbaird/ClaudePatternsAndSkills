@@ -9,8 +9,9 @@ where a slot is currently empty.
 > **Sub-pattern** = a composable building block referenced by full patterns, not used alone.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md) (run once for the umbrella
 > and once per sub-repo), single-repo, and any pattern that stands up a repo. Sibling of
-> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md), and
-> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md).
+> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md),
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md).
 > Placeholder: `<REPO>` = the target repo's root.
 
 ## Why

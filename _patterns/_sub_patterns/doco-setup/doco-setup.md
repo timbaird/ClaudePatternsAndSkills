@@ -5,9 +5,12 @@ A reusable recipe that establishes the standard **four-surface documentation str
 repo carries its own map.
 
 > **Sub-pattern** = a composable building block referenced by full patterns, not used alone.
-> Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-pattern.md), single-repo, etc.
-> Sibling of [memory-setup](../memory-setup/memory-setup.md) — together they stand up a repo's
-> Claude + docs infrastructure. Placeholder: `<REPO>` = the target repo's root.
+> Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md), single-repo, etc.
+> Sibling of [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
+> [memory-setup](../memory-setup/memory-setup.md),
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md) — together these stand up a repo's Claude +
+> docs infrastructure. Placeholder: `<REPO>` = the target repo's root.
 
 ## What it sets up (the four surfaces)
 
@@ -54,6 +57,12 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 
 ## Notes
 
+- **`CLAUDE.md` is shared by three sub-patterns, cooperatively:**
+  [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md) creates a bare placeholder, this
+  sub-pattern authors the body, and
+  [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md) adds
+  the cascade wiring. All are create-or-augment, so any order works — augment what's there, don't
+  clobber it.
 - **`docs/` is the same role for non-software repos** — the project's substantive knowledge base, not
   necessarily code architecture. (The name `docs/` is deliberately neutral for that reason.)
 - Keep `CLAUDE.md` small and `README.md` skim-friendly; let **`docs/`** absorb length and **`MEMORY`**
