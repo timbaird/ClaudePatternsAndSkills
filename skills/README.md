@@ -13,6 +13,9 @@ own script, if any).
 | Skill | Version | Summary |
 |---|---|---|
 | [inspect-file-size](inspect-file-size/) | 1.0.0 | Report any file's (Office/`.pptx`/`.docx`/`.xlsx` or zip) size and exactly what's bloating it, and gate over a guideline — before committing to git. General-purpose. `python3`. |
+| [skill-creator](skill-creator/) | 1.0.0¹ | Create, edit, improve, and benchmark skills — the meta-skill for building the others. **Externally created** (Anthropic), centralised here; lightly trimmed of non-applicable environment guidance (see its README). |
+
+¹ Externally-created skill — the version is an *internal tracking* field (records when we re-vendor an upstream update), not our own iteration. See [skill-creator/README.md](skill-creator/README.md).
 
 ## Deploying a skill
 

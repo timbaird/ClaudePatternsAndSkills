@@ -18,6 +18,10 @@ Assets here are **sources** — copied into projects — so treat changes as pub
 - **Current-state only — no process archaeology.** Docs and patterns describe how to do the thing *now*;
   no "we used to…" narration. Asset **version stamps** are fine (current-state facts).
 - **Every skill carries a `version` + a `README`;** keep each collection's index in step with its contents.
+  Versioning means different things by origin: for **internally-created** skills the version tracks *our*
+  iteration; for **externally-created** skills (vendored verbatim) it's an *internal tracking* field
+  recording when we re-vendor an upstream update — flag the external origin in the skill's `README` and a
+  `SKILL.md` frontmatter comment.
 
 ## Out of scope
 - Not an app/runtime — nothing here "runs" as a product; it's a library of assets + recipes.
