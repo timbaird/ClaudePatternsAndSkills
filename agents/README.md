@@ -14,12 +14,15 @@ rules (which auto-fire), an agent is invoked explicitly via the Agent tool / a s
 |---|---|---|---|
 | [code-reviewer](code-reviewer.md) | Read/Grep/Glob/Bash | ECC (vendored) | Senior code-review specialist — confidence-gated findings (>80%), explicit false-positive list, security/quality/perf/React/Node checklists, "zero findings is a valid review." |
 | [silent-failure-hunter](silent-failure-hunter.md) | Read/Grep/Glob/Bash | ECC (vendored) | Hunts silent failures — empty catches, swallowed errors, dangerous fallbacks, lost stack traces, missing error propagation. Language-agnostic. |
+| [code-simplifier](code-simplifier.md) | Read/Write/Edit/Bash/Grep/Glob | ECC (vendored, **modified**) | Proposes behaviour-preserving simplifications of recently changed code (clarity, early returns, dead-code removal). **Modified from upstream**: presents before/after diffs, discusses, and applies only what you approve — never auto-edits. |
 
 ## Provenance & the "Prompt Defense Baseline" block
 
-The vendored agents are copied **verbatim** from [Everything Claude Code](../resources.md) (ECC, MIT),
-**scanned in full on intake** (they're single-file instruction documents — no bundled code, no network
-calls, no ECC-runtime coupling). Each carries a provenance comment in its frontmatter.
+The vendored agents come from [Everything Claude Code](../resources.md) (ECC, MIT) and were
+**scanned in full on intake** (single-file instruction documents — no bundled code, no network calls,
+no ECC-runtime coupling). Most are **verbatim**; `code-simplifier` is **modified** (an approval gate
+added — it proposes and applies only what you approve, never auto-edits). Each carries a provenance
+comment in its frontmatter.
 
 They retain ECC's prepended **"Prompt Defense Baseline"** block — a short generic prompt-injection
 guardrail. It's kept deliberately (verbatim + a reasonable defense); strip it if you'd rather a leaner
