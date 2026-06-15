@@ -23,6 +23,31 @@ Assets here are **sources** — copied into projects — so treat changes as pub
   recording when we re-vendor an upstream update — flag the external origin in the skill's `README` and a
   `SKILL.md` frontmatter comment.
 
+## Working discipline — assumptions & documentation
+
+Never record anything as *decided / agreed / canonical* unless it was actively discussed **and**
+explicitly approved. Flag anything not yet agreed with `[TBD — needs discussion: <what is open>]`
+rather than writing it as settled.
+
+- Capture only what was discussed and agreed; don't extrapolate a principle into unraised specifics.
+- Flag open questions explicitly with `[TBD — …]`.
+- Distinguish archived/historical material from in-conversation decisions.
+- Smaller is better — three faithfully-captured points beat ten padded ones.
+- Self-correct — if you catch yourself writing beyond what was discussed, remove it or mark it `[TBD]`.
+
+(This is the same universal discipline `project-discovery` stamps into every repo it sets up — CPAS
+eats its own dogfood. "Current-state only" is the load-bearing principle above.)
+
+## Git safety — destructive operations require explicit approval
+
+Never run a destructive git operation without explicit, in-conversation approval for that specific
+action — regardless of any settings allowlist or prior approval. Destructive includes: force push,
+hard reset, discarding uncommitted changes, `git clean -f`, force-deleting branches, history rewrites
+(`rebase`, `amend` on pushed commits, `filter-branch`/`filter-repo`), dropping stashes, deleting tags,
+and any `--no-verify` / `--no-gpg-sign` bypass. Force-pushing a protected branch (`main`/`master`/
+`release/*`) must be refused outright. When unsure whether something can lose work or rewrite history,
+treat it as destructive and ask.
+
 ## Out of scope
 - Not an app/runtime — nothing here "runs" as a product; it's a library of assets + recipes.
 - No central package manager / auto-install — vendoring is deliberate (revisit only at scale).
