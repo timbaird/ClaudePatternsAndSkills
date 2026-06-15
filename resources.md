@@ -77,3 +77,15 @@ through coding agents. A native desktop app (macOS/Windows) with 100+ skills, 15
 dashboards, presentations, images, and videos exported as real HTML/CSS/PDF/PPTX/MP4. It keeps
 processing local (optional self-hosting), enforces brand consistency via reusable `DESIGN.md` specs,
 and operates as a "filesystem of skills, design systems, and plugins" any compatible agent can consume.
+
+## Understand-Anything
+<https://github.com/Egonex-AI/Understand-Anything>
+
+An open-source plugin for AI coding platforms (Claude Code, Cursor, Copilot, Gemini CLI, …) that
+analyses a codebase or knowledge base and generates **interactive, visual knowledge graphs**. It uses a
+multi-agent pipeline (tree-sitter parsing + LLM analysis) to extract structural relationships between
+files, functions, and classes, then presents them in an explorable dashboard with guided tours,
+semantic search, and impact analysis — aimed at onboarding into large/unfamiliar projects by
+*visualising* architecture and business logic rather than reading code top-to-bottom. *(Same
+"understand an existing repo" space as ECC's `codebase-onboarding` and our `project-discovery` — a
+heavier, visual-dashboard take rather than a CLAUDE.md generator.)*
