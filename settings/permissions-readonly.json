@@ -1,0 +1,43 @@
+{
+  "//": "READ-ONLY permission profile (recommended default) — common read-only commands auto-approved; writes, installs, network calls, and state-changing git still prompt. Merge the 'permissions' block below into <REPO>/.claude/settings.json, preserving $schema and any existing hooks. Applied by the settings-setup sub-pattern. See settings/README.md.",
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(file:*)",
+      "Bash(stat:*)",
+      "Bash(readlink:*)",
+      "Bash(realpath:*)",
+      "Bash(tree:*)",
+      "Bash(du:*)",
+      "Bash(df:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(pwd)",
+      "Bash(whoami)",
+      "Bash(which:*)",
+      "Bash(uname:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git config --get:*)",
+      "Read(./**)"
+    ],
+    "deny": [
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Bash(rm -rf:*)"
+    ],
+    "defaultMode": "default"
+  }
+}

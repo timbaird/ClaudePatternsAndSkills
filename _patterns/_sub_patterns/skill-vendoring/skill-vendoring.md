@@ -10,8 +10,10 @@ don't arrive on their own. This is the "bring your skills" step.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md) (Step 9), single-repo, and
 > any setup that wants reusable skills present. Sibling of
 > [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
-> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md), and
-> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md).
+> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md),
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),
+> [project-discovery](../project-discovery/project-discovery.md), and
+> [settings-setup](../settings-setup/settings-setup.md).
 > Placeholders: `<REPO>` = target repo root; `<DEST>` = the `.claude/skills/` folder the **calling
 > pattern designates** for each skill (see *Placement*).
 

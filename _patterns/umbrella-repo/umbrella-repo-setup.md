@@ -65,7 +65,7 @@ of writing:
 settings, rules, and memory stay at the umbrella top.* This asymmetry is the entire reason
 for **"always launch from the umbrella."** Launch inside a sub-repo and you silently lose
 the umbrella's agents, settings, rules, and shared memory. (It's also why each sub-repo's
-`CLAUDE.md` carries an **up-pointer** to the umbrella — see the cascade sub-pattern, §6 Step 7.)
+`CLAUDE.md` carries an **up-pointer** to the umbrella — see the cascade sub-pattern, §6 Step 8.)
 
 ---
 
@@ -112,7 +112,7 @@ the sub-pattern.)
 > parallel sub-agents: the sub-patterns share files (`CLAUDE.md`, `settings.json`) and have
 > ordering dependencies, so linear execution avoids write races and keeps the end state coherent.
 > **No step commits.** The sub-patterns deliberately defer committing; the agent makes a
-> **single commit per repo at the very end** (Step 10).
+> **single commit per repo at the very end** (Step 12).
 >
 > *(At scale — many sub-repos — the one step worth fanning out is the purely repo-local skeleton
 > creation in Step 4, since those trees are disjoint. Keep all umbrella-level edits in the main
@@ -148,13 +148,20 @@ Follow **[memory-setup](../_sub_patterns/memory-setup/memory-setup.md)**: vendor
 sub-pattern owns the full mechanism, the **Node prerequisite** check, the new-machine flow, and
 (optionally) migrating + SHA-256-verifying existing memory.
 
-### Step 6 — Documentation surfaces  ← run the sub-pattern
-Follow **[doco-setup](../_sub_patterns/doco-setup/doco-setup.md)**: establish the four doc surfaces
-(`README.md`, `CLAUDE.md`, `MEMORY`, `docs/`), vendor `doco-structure.md` into `<UMBRELLA>/docs/`,
-and **author the umbrella's `README.md` and `CLAUDE.md` body** (project-wide context + standing
-working rules). MEMORY is the Step 5 sibling; this step just leaves `CLAUDE.md` pointing at it.
+### Step 6 — Operational config: git autonomy + permissions  ← run the sub-pattern
+Follow **[settings-setup](../_sub_patterns/settings-setup/settings-setup.md)**: ask the git-interaction
+and permission-model questions, then **merge** the matching [`settings/`](../../settings/) permission
+template into `<UMBRELLA>/.claude/settings.json`. It merges *only* the `permissions` block — preserving
+the `SessionStart` memory hook Step 5 added (different keys, never overwrite), and its deny-list keeps
+that hook's `node`/`git` operations clear.
 
-### Step 7 — `CLAUDE.md` cascade  ← run the sub-pattern
+### Step 7 — Documentation surfaces  ← run the sub-pattern
+Follow **[doco-setup](../_sub_patterns/doco-setup/doco-setup.md)**: establish the four doc surfaces
+(`README.md`, `CLAUDE.md`, `MEMORY`, `docs/`) and vendor `doco-structure.md` into `<UMBRELLA>/docs/`.
+This sets up the `CLAUDE.md`/`README` **shape**; their **content is drafted in Step 9**
+(project-discovery). MEMORY is the Step 5 sibling; this step just leaves `CLAUDE.md` pointing at it.
+
+### Step 8 — `CLAUDE.md` cascade  ← run the sub-pattern
 Follow **[umbrella-claude-md-cascade](../_sub_patterns/umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md)**:
 add the **down-signpost** to the umbrella `CLAUDE.md` (plain links to every sub-repo's `CLAUDE.md`,
 **never `@imports`**) and an **up-pointer** to each sub-repo `CLAUDE.md`, creating any missing
@@ -162,7 +169,16 @@ sub-repo `CLAUDE.md`. It's idempotent and order-independent — **re-run it when
 added**. (Runs *after* doco-setup so it augments the authored `CLAUDE.md` rather than colliding with
 its creation.)
 
-### Step 8 — Project-wide rules
+### Step 9 — Draft the project's `CLAUDE.md` content  ← run the sub-pattern
+Follow **[project-discovery](../_sub_patterns/project-discovery/project-discovery.md)**: a structured
+interview (seven dimensions, a "must-not-go-stale" summary, mandatory repeat-back) that drafts the
+"What this project is" summary into the umbrella `CLAUDE.md` + `README.md` and **stamps the universal
+discipline rules** (assumptions / `[TBD]` discipline, destructive-git approval) into the always-loaded
+umbrella `CLAUDE.md` — once, at the top, not duplicated into sub-repos. Runs after the surfaces (Step 7)
+and cascade (Step 8) exist. For an *existing* codebase, `codebase-onboarding` can analyse it first to
+seed the answers.
+
+### Step 10 — Project-wide rules
 Put cross-cutting rules in `<UMBRELLA>/.claude/rules/<name>.md`, scoped with a `paths:` glob so they
 fire across all repos. Vendor the library's
 [`rules/coding-principles.md`](../../rules/coding-principles.md) as the standard one — it's already
@@ -171,7 +187,7 @@ the same way; rules auto-fire by their glob, with no `settings.json` wiring. (Se
 [rules/README.md](../../rules/README.md) for placement — rules load from the launch-dir root, so keep
 them at the umbrella and let the glob reach sub-repo files.)
 
-### Step 9 — Bring in existing reusable skills  ← run the sub-pattern
+### Step 11 — Bring in existing reusable skills  ← run the sub-pattern
 Skills are **vendored** (committed per-repo), so a new project starts with an empty `.claude/skills/`.
 Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) to bring in the reusable
 skills the user wants — it asks which to vendor and where each source is, copies each **verbatim**
@@ -180,7 +196,7 @@ Supply the **placement** per §4: cross-project / utility skills → `<UMBRELLA>
 repo-specific skills → that sub-repo's `.claude/skills/`. *(The Node memory hook is vendored by Step 5
 — no need to request it.)*
 
-### Step 10 — Verify end-to-end, then commit (the single commit)
+### Step 12 — Verify end-to-end, then commit (the single commit)
 - **Memory test:** put a unique marker line at the top of `.claude/memory/MEMORY.md`, open a
   **fresh session from the umbrella**, and ask Claude to recall it. If it knows it and reports its
   memory path as `<UMBRELLA>/.claude/memory/`, the redirect is live. Remove the marker.
@@ -215,7 +231,7 @@ everything: the umbrella's shared layer *plus* each sub-repo's own context on de
 - [ ] Memory migration: **verify SHA-256** and **commit** before deleting any source (see memory-setup).
 - [ ] No `@imports` in the cascade — plain links only (eager vs lazy; see cascade sub-pattern).
 - [ ] Vendored skills don't auto-arrive in a *new* project — **request the user's reusable skills**
-      and copy them in, placed per §4 (Step 9).
+      and copy them in, placed per §4 (Step 11).
 - [ ] Commit each repo **separately** — they're independent git repositories — and only **once**, at
       the end.
 

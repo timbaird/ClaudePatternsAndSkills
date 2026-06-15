@@ -1,0 +1,11 @@
+{
+  "//": "OPEN permission profile — auto-approve everything (defaultMode bypassPermissions). NOT recommended as a default: use only for throwaway sandboxes or fully-isolated environments. A minimal deny baseline is kept as defence-in-depth (deny overrides bypass). Merge the 'permissions' block below into <REPO>/.claude/settings.json, preserving $schema and any existing hooks. See settings/README.md.",
+  "permissions": {
+    "deny": [
+      "Read(./**/.env)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "defaultMode": "bypassPermissions"
+  }
+}

@@ -44,7 +44,9 @@ the repo root.
 |---|---|---|
 | Skeleton | [dot-claude-setup](../_sub_patterns/dot-claude-setup/dot-claude-setup.md) | the uniform `.claude/` tree + minimal `settings.json` + `.gitignore` + bare `CLAUDE.md` |
 | Memory | [memory-setup](../_sub_patterns/memory-setup/memory-setup.md) | relocate auto-memory into `<REPO>/.claude/memory/` (Node hook + `settings.local.json` redirect) |
-| Docs | [doco-setup](../_sub_patterns/doco-setup/doco-setup.md) | the four surfaces — `README.md`, `CLAUDE.md` body, `MEMORY`, `docs/` |
+| Settings | [settings-setup](../_sub_patterns/settings-setup/settings-setup.md) | git autonomy + permission model → merge a `settings/` template into `settings.json` |
+| Docs | [doco-setup](../_sub_patterns/doco-setup/doco-setup.md) | the four surfaces — `README.md`, `CLAUDE.md` *shape*, `MEMORY`, `docs/` |
+| Content | [project-discovery](../_sub_patterns/project-discovery/project-discovery.md) | interview → draft the `CLAUDE.md`/`README` summary + stamp universal discipline into `CLAUDE.md` |
 | Skills | [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) | vendor any reusable skills the user wants → `<REPO>/.claude/skills/` |
 | Rules | [`rules/coding-principles.md`](../../rules/coding-principles.md) | (optional) the standard coding-principles rule |
 
@@ -56,7 +58,7 @@ has just one `CLAUDE.md`.
 
 > Run by **one agent, in order**. The sub-patterns share files (`settings.json`, `CLAUDE.md`) and have
 > ordering dependencies, so don't fan them out. **No step commits** — make a **single commit** at the
-> end (Step 6).
+> end (Step 8).
 
 ### Step 1 — The repo
 Create or clone the git repo `<REPO>` and `cd` in. (Skip if it already exists.)
@@ -72,12 +74,25 @@ Run [memory-setup](../_sub_patterns/memory-setup/memory-setup.md): vendor the No
 keys off the repo's own git root, so it targets `<REPO>/.claude/memory/` automatically. (Confirm the
 **Node prerequisite** first.)
 
-### Step 4 — Documentation surfaces  ← run the sub-pattern
-Run [doco-setup](../_sub_patterns/doco-setup/doco-setup.md): author `README.md` and the `CLAUDE.md`
-body, and vendor `doco-structure.md` into `docs/`. (MEMORY is the Step 3 sibling; this step just leaves
+### Step 4 — Operational config: git autonomy + permissions  ← run the sub-pattern
+Run [settings-setup](../_sub_patterns/settings-setup/settings-setup.md): answer the git-interaction and
+permission-model questions; it **merges** the matching [`settings/`](../../settings/) permission
+template into `.claude/settings.json` (only the `permissions` block — preserving the Step 3 memory hook).
+
+### Step 5 — Documentation surfaces  ← run the sub-pattern
+Run [doco-setup](../_sub_patterns/doco-setup/doco-setup.md): establish the four doc surfaces and vendor
+`doco-structure.md` into `docs/`. This sets up the `CLAUDE.md`/`README` **shape**; their **content is
+drafted in Step 6** (project-discovery). (MEMORY is the Step 3 sibling; this step just leaves
 `CLAUDE.md` pointing at it.)
 
-### Step 5 — Skills + rules
+### Step 6 — Draft the project's `CLAUDE.md` content  ← run the sub-pattern
+Run [project-discovery](../_sub_patterns/project-discovery/project-discovery.md): the structured
+interview (seven dimensions, a "must-not-go-stale" summary, mandatory repeat-back) that drafts the
+"What this project is" summary into `CLAUDE.md` + `README.md` and stamps the universal discipline rules
+(assumptions / `[TBD]`, destructive-git approval) into the single `CLAUDE.md`. For an *existing*
+codebase, `codebase-onboarding` can analyse it first to seed the answers.
+
+### Step 7 — Skills + rules
 - Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) for any reusable skills
   the user wants. **Placement is trivial here** — there's one repo, so everything goes to
   `<REPO>/.claude/skills/`.
@@ -85,7 +100,7 @@ body, and vendor `doco-structure.md` into `docs/`. (MEMORY is the Step 3 sibling
   `<REPO>/.claude/rules/` — it auto-fires on code files via its `paths:` glob (no `settings.json`
   wiring).
 
-### Step 6 — Verify, then commit (the single commit)
+### Step 8 — Verify, then commit (the single commit)
 - **Memory test:** put a unique marker at the top of `.claude/memory/MEMORY.md`, open a **fresh session
   from `<REPO>`**, and ask Claude to recall it and report its memory path → should be
   `<REPO>/.claude/memory/`. Remove the marker.

@@ -1,0 +1,14 @@
+{
+  "//": "STRICT permission profile — ask before every action. Merge the 'permissions' block below into <REPO>/.claude/settings.json, preserving $schema and any existing hooks. Applied by the settings-setup sub-pattern. See settings/README.md.",
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Bash(rm -rf:*)"
+    ],
+    "defaultMode": "default"
+  }
+}

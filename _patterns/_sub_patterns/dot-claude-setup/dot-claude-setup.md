@@ -10,8 +10,10 @@ where a slot is currently empty.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md) (run once for the umbrella
 > and once per sub-repo), single-repo, and any pattern that stands up a repo. Sibling of
 > [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md),
-> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
-> [skill-vendoring](../skill-vendoring/skill-vendoring.md).
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md),
+> [project-discovery](../project-discovery/project-discovery.md), and
+> [settings-setup](../settings-setup/settings-setup.md).
 > Placeholder: `<REPO>` = the target repo's root.
 
 ## Why

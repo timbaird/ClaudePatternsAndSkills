@@ -9,8 +9,10 @@ each machine pointed at it automatically, every session.
 > setup that wants portable memory). Sibling of
 > [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
 > [doco-setup](../doco-setup/doco-setup.md),
-> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
-> [skill-vendoring](../skill-vendoring/skill-vendoring.md). Placeholder: `<REPO>` = the target repo's
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md),
+> [project-discovery](../project-discovery/project-discovery.md), and
+> [settings-setup](../settings-setup/settings-setup.md). Placeholder: `<REPO>` = the target repo's
 > root.
 
 ## Why

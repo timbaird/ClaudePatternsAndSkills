@@ -9,8 +9,10 @@ touches a file in it — with nothing duplicated.
 > **Sub-pattern** = a composable building block referenced by full patterns, not used alone.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md). Sibling of
 > [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
-> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md), and
-> [skill-vendoring](../skill-vendoring/skill-vendoring.md).
+> [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md),
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md),
+> [project-discovery](../project-discovery/project-discovery.md), and
+> [settings-setup](../settings-setup/settings-setup.md).
 > Placeholders: `<UMBRELLA>` = the umbrella repo root; `<REPO>` / `<REPO_A>`, `<REPO_B>`, … = nested
 > working repos.
 

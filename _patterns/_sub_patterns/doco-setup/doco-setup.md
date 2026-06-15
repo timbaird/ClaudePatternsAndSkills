@@ -8,8 +8,10 @@ repo carries its own map.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md), single-repo, etc.
 > Sibling of [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
 > [memory-setup](../memory-setup/memory-setup.md),
-> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md), and
-> [skill-vendoring](../skill-vendoring/skill-vendoring.md) — together these stand up a repo's Claude +
+> [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md),
+> [project-discovery](../project-discovery/project-discovery.md), and
+> [settings-setup](../settings-setup/settings-setup.md) — together these stand up a repo's Claude +
 > docs infrastructure. Placeholder: `<REPO>` = the target repo's root.
 
 ## What it sets up (the four surfaces)
@@ -20,7 +22,7 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 | Surface | Role | Provisioned by |
 |---|---|---|
 | `README.md` | human landing page | **this sub-pattern** (authored) |
-| `CLAUDE.md` | always-loaded agent operating rules (small, universal, imperative) | **this sub-pattern** (authored) |
+| `CLAUDE.md` | always-loaded agent operating rules (small, universal, imperative) | **this sub-pattern** (surface) + **project-discovery** (content) |
 | `MEMORY.md` + `.claude/memory/` | agent's accumulated durable knowledge (situational, declarative) | the **memory-setup** sub-pattern |
 | `docs/` (+ `INDEX.md`, `doco-structure.md`) | technical / knowledge wiki | **this sub-pattern** |
 
@@ -45,9 +47,11 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
    description. Seed it with the `doco-structure.md` entry.
 3. **Author `<REPO>/README.md`** to the README surface (what / why / status / how-to-try) — kept
    skim-friendly and repo-specific.
-4. **Author `<REPO>/CLAUDE.md`** to the CLAUDE.md surface — *small*: one-paragraph what, where-to-read,
-   load-bearing principles, out-of-scope list, broad conventions, and **pointers** to `docs/` and
-   `MEMORY` (don't duplicate their content). Keep it lean; it's loaded every session.
+4. **`CLAUDE.md` body** — establish the *surface/shape* here (small, imperative, pointers to `docs/` and
+   `MEMORY`, loaded every session), but the **content is drafted by
+   [project-discovery](../project-discovery/project-discovery.md)** (a structured interview), not
+   authored ad-hoc — run it after the surfaces exist. project-discovery produces the "What this project
+   is" summary and stamps the universal discipline rules into the always-loaded top `CLAUDE.md`.
 5. **`MEMORY`** — provisioned by the **memory-setup** sub-pattern. If composing both (the usual case),
    run that too; this recipe just leaves `CLAUDE.md` pointing at `MEMORY`.
 
@@ -57,9 +61,11 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 
 ## Notes
 
-- **`CLAUDE.md` is shared by three sub-patterns, cooperatively:**
+- **`CLAUDE.md` is shared by four sub-patterns, cooperatively:**
   [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md) creates a bare placeholder, this
-  sub-pattern authors the body, and
+  sub-pattern establishes the surface/shape,
+  [project-discovery](../project-discovery/project-discovery.md) drafts the content (summary + universal
+  rules), and
   [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md) adds
   the cascade wiring. All are create-or-augment, so any order works — augment what's there, don't
   clobber it.
