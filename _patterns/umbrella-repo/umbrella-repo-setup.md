@@ -158,8 +158,12 @@ that hook's `node`/`git` operations clear.
 ### Step 7 — Documentation surfaces  ← run the sub-pattern
 Follow **[doco-setup](../_sub_patterns/doco-setup/doco-setup.md)**: establish the four doc surfaces
 (`README.md`, `CLAUDE.md`, `MEMORY`, `docs/`) and vendor `doco-structure.md` into `<UMBRELLA>/docs/`.
-This sets up the `CLAUDE.md`/`README` **shape**; their **content is drafted in Step 9**
-(project-discovery). MEMORY is the Step 5 sibling; this step just leaves `CLAUDE.md` pointing at it.
+**Run it at the umbrella ONLY — `docs/` is the single shared documentation surface for the umbrella and
+every sub-repo; sub-repos get no `docs/` of their own** (you always launch from the umbrella, so one
+surface serves all). This sets up the `CLAUDE.md`/`README` **shape** — including the **required-reading
+pointer to `docs/INDEX.md`** (the docs index isn't auto-loaded like `MEMORY`, so `CLAUDE.md` must point
+at it); their **content is drafted in Step 9** (project-discovery). MEMORY is the Step 5 sibling; this
+step just leaves `CLAUDE.md` pointing at it.
 
 ### Step 8 — `CLAUDE.md` cascade  ← run the sub-pattern
 Follow **[umbrella-claude-md-cascade](../_sub_patterns/umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md)**:

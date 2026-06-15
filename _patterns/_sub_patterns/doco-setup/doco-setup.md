@@ -14,6 +14,11 @@ repo carries its own map.
 > [settings-setup](../settings-setup/settings-setup.md) — together these stand up a repo's Claude +
 > docs infrastructure. Placeholder: `<REPO>` = the target repo's root.
 
+> **One docs surface, top-level only.** Run this **once per project, at the top**: the umbrella in a
+> multi-repo project, the repo root in a single-repo one. **Sub-repos get no `docs/`** — the umbrella's
+> `docs/` is the single shared documentation surface for the umbrella *and* every sub-repo (you always
+> launch from the umbrella, so one surface serves all). Don't scaffold a `docs/` in each sub-repo.
+
 ## What it sets up (the four surfaces)
 
 Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-structure.md`** explainer
@@ -44,7 +49,8 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 1. **Create `docs/`** and copy **`doco-structure.md`** (verbatim, from beside this recipe) to
    `<REPO>/docs/doco-structure.md` — the in-repo explainer of the four surfaces.
 2. **Create `docs/INDEX.md`** — the entry point listing every `docs/` document with a one-line
-   description. Seed it with the `doco-structure.md` entry.
+   description. Seed it with the `doco-structure.md` entry. This index is **required reading** and is
+   surfaced by a pointer in `CLAUDE.md` (step 4) — it is *not* auto-loaded like `MEMORY.md`.
 3. **Author `<REPO>/README.md`** to the README surface (what / why / status / how-to-try) — kept
    skim-friendly and repo-specific.
 4. **`CLAUDE.md` body** — establish the *surface/shape* here (small, imperative, pointers to `docs/` and
@@ -52,6 +58,11 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
    [project-discovery](../project-discovery/project-discovery.md)** (a structured interview), not
    authored ad-hoc — run it after the surfaces exist. project-discovery produces the "What this project
    is" summary and stamps the universal discipline rules into the always-loaded top `CLAUDE.md`.
+   - **Add the docs-index required-reading pointer.** The always-loaded `CLAUDE.md` must carry a line
+     telling the agent to **read [`docs/INDEX.md`](docs/INDEX.md) every session and load the relevant
+     doc before related work**. `docs/INDEX.md` is *not* auto-injected like `MEMORY.md`, so without this
+     pointer the docs surface is silently missed. (This is the always-on enforcement of the index — the
+     docs counterpart to how `MEMORY.md`'s index is auto-loaded.)
 5. **`MEMORY`** — provisioned by the **memory-setup** sub-pattern. If composing both (the usual case),
    run that too; this recipe just leaves `CLAUDE.md` pointing at `MEMORY`.
 

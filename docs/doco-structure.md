@@ -38,7 +38,10 @@ high-leverage**; bloat dilutes the signal and gets load-bearing rules missed.
 - load-bearing **principles** that constrain *every* task;
 - the **out-of-scope** list, so the agent never proposes deliberately-excluded things;
 - broad project-specific conventions;
-- **pointers** (not duplicated content) to `MEMORY` and `docs/`.
+- **pointers** (not duplicated content) to `MEMORY` and `docs/` — including a **required-reading line
+  for [`docs/INDEX.md`](#4-docs--the-technical--knowledge-wiki)**. Unlike `MEMORY.md`, the docs index is
+  **not** auto-injected each session, so the always-loaded `CLAUDE.md` must explicitly tell the agent to
+  read it (then load the relevant doc on demand — the same index-then-load pattern as `MEMORY`).
 
 **Does NOT belong here.** Situational knowledge that isn't relevant every session (→ `MEMORY`),
 generic language/framework advice, deep detail (→ `docs/`), user-facing framing (→ `README`).
@@ -77,8 +80,15 @@ the place where deep *why* lives. (For a non-software project, the same surface 
 substantive knowledge base; the role is identical even if the content isn't code.)
 
 **Structure.**
-- **`INDEX.md`** — entry point: every document with a one-line description, organised by category.
+- **`INDEX.md`** — entry point: every document with a one-line description, organised by category. It
+  is **required reading**, surfaced by a pointer in the always-loaded `CLAUDE.md` (the index is not
+  auto-loaded; the pointer is what makes it reliably read). An un-indexed document is invisible.
 - **Content documents** — one focused topic per file, kebab-case (`schema-design.md`).
+
+**One docs surface, at the top level only.** In a multi-repo (umbrella) project, `docs/` lives **only at
+the umbrella** — a single shared documentation surface for the umbrella *and* every sub-repo. Sub-repos
+hold **no** `docs/` of their own (you always launch from the umbrella, so one surface serves all). In a
+single-repo project, `docs/` is at that repo's root. Either way there is exactly one `docs/`, at the top.
 
 **Does NOT belong here.** Agent instructions (`CLAUDE.md`), user-facing framing (`README.md`),
 throwaway scratch notes (if it isn't worth indexing, it isn't worth keeping).

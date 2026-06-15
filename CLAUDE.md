@@ -4,6 +4,8 @@ A reusable library of Claude Code **patterns, skills, and hooks** that get vendo
 Assets here are **sources** — copied into projects — so treat changes as published: they ripple outward.
 
 ## Read first
+- **[docs/INDEX.md](docs/INDEX.md) — read this every session** (the docs catalogue; not auto-loaded
+  like `MEMORY`, so reading it is on you), and load the relevant doc before related work.
 - [README.md](README.md) — what the library is and its layout.
 - [docs/doco-structure.md](docs/doco-structure.md) — the four doc surfaces and the `CLAUDE.md`⇄`MEMORY` split.
 - Collection indexes: `skills/README.md`, `skill-packs/README.md`, `hooks/README.md`, and `_patterns/`.

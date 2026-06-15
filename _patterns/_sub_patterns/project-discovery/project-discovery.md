@@ -126,7 +126,8 @@ Re-running means **refine**, not silent regenerate:
 ## Composition
 
 - **[doco-setup](../doco-setup/doco-setup.md)** builds the *structure*; this fills the *content*.
-  (doco-setup's "author the `CLAUDE.md` body" step delegates here.)
+  (doco-setup's "author the `CLAUDE.md` body" step delegates here.) doco-setup's `CLAUDE.md` **shape**
+  includes the **required-reading pointer to `docs/INDEX.md`** — augment around it, don't drop it.
 - **[settings-setup](../settings-setup/)** owns *operational config* (git autonomy, the permission
   allowlist → `settings.json`) — kept separate from project knowledge.
 - **codebase-onboarding** (analysis) optionally seeds this interview for an existing repo.
