@@ -41,6 +41,23 @@ production-ready configs evolved through months of daily use. It works as both a
 a manual toolkit, with cross-platform support (Windows/macOS/Linux), memory persistence, continuous
 learning, and security scanning (AgentShield).
 
+**Mined for CPAS (audited 2026-06-15).** Most reuse value is in its meta / agent-infra / security
+skills. Two large categories are **documented here for on-demand pull** rather than vendored up front —
+they evolve over time and only matter when you're actually in that stack/domain:
+
+- **Language/framework stacks** (~72 skills + per-language `rules/<lang>/` + `<lang>-reviewer` agents):
+  python, typescript, react, kotlin, swift, rust, go, java, c#, php, dart/flutter, angular, vue, etc.
+  When working in one, pull the *latest* copy of that language's `skills/<lang>-patterns` +
+  `skills/<lang>-testing`, `rules/<lang>/`, and the matching reviewer/build-resolver agent. (Note: not
+  uniform — python has a full skill pair; typescript is rules + reviewer only; there is **no** generic
+  javascript or node pack.)
+- **Domain verticals** (~80 skills): crypto/DeFi & trading, healthcare/HIPAA, logistics/supply-chain,
+  scientific, homelab/networking, finance/billing, marketing/SEO. Of likely future interest
+  (esp. crypto/DeFi/trading) — pull on demand.
+- **AgentShield** — a standalone Claude Code *config security scanner* (separate repo,
+  `npm: ecc-agentshield`): <https://github.com/affaan-m/agentshield>. Scans `.claude/` for secrets,
+  over-broad permissions, hook injection, risky MCP config, and agent-config issues.
+
 ## Ruflo — multi-agent AI harness
 <https://github.com/ruvnet/ruflo>
 
