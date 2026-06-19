@@ -6,7 +6,8 @@ in repositories and projects — so common setup and tooling is *vendored in*, n
 ## What's here
 
 - **`_patterns/`** — *recipes*: how to set up a repo/project for a kind of work (e.g. `umbrella-repo`,
-  `single-repo`), composed from reusable **`_sub_patterns/`** (e.g. `memory-setup`, `doco-setup`).
+  `single-repo`, `library-setup`), composed from reusable **`_sub_patterns/`** (e.g. `memory-setup`,
+  `doco-setup`).
 - **`skills/`** — standalone, drop-in skills (e.g. `inspect-file-size`).
 - **`skill-packs/`** — bundles of skills deployed *together* with shared dependencies (e.g. `vet-uoc-development`).
 - **`hooks/`** — cross-platform hook scripts wired into `settings.json` (e.g. `ensure-repo-memory.mjs`).

@@ -95,7 +95,11 @@ rather than writing it as settled.
 - Distinguish archived/historical material from in-conversation decisions.
 - Smaller is better — three faithfully-captured points beat ten padded ones.
 - Self-correct — if you catch yourself writing beyond what was discussed, remove it or mark it `[TBD]`.
-- Docs describe the **current state only**; what-was lives in git history, not in prose.
+- **Document what IS, not what WAS.** When something changes, record only the current state — drop
+  "used to be" / "migrated from" / "formerly" / "renamed from" / "superseded" framing. The prior state
+  serves no future session and goes stale; git history holds it. Record what-was **only** when there is
+  a real, direct need a human has agreed to (e.g. a deprecated thing that still exists and must not be
+  used — then state the *current* rule: "use X, not Y", without the history).
 
 ## Git safety — destructive operations require explicit approval
 

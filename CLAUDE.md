@@ -17,13 +17,18 @@ Assets here are **sources** — copied into projects — so treat changes as pub
   a master means re-copying into consumers — accept the drift, track it via version stamps.
 - **Cross-platform hooks use Node** (`node <file>.mjs`) — identical command on every OS. Don't write hook
   commands in `powershell`/`bash`/`python3` (not portable as committed hook commands).
-- **Current-state only — no process archaeology.** Docs and patterns describe how to do the thing *now*;
-  no "we used to…" narration. Asset **version stamps** are fine (current-state facts).
-- **Every skill carries a `version` + a `README`;** keep each collection's index in step with its contents.
-  Versioning means different things by origin: for **internally-created** skills the version tracks *our*
-  iteration; for **externally-created** skills (vendored verbatim) it's an *internal tracking* field
-  recording when we re-vendor an upstream update — flag the external origin in the skill's `README` and a
-  `SKILL.md` frontmatter comment.
+- **Document what IS, not what WAS — current-state only.** Docs and patterns describe how to do the
+  thing *now*; drop "used to be" / "migrated from" / "formerly" / "renamed from" / "superseded" framing —
+  git history holds the past. Record what-was only when a human agreed there's a direct need (e.g. a
+  deprecated thing that still exists and must not be used). Asset **version stamps** are fine
+  (current-state facts).
+- **Every skill _and agent_ carries a `version`;** skills also carry a `README`. Keep each collection's
+  index in step with its contents (the version lives in `SKILL.md` frontmatter for skills, in the agent
+  `.md` frontmatter for agents, and is mirrored in the collection's catalogue). Versioning means
+  different things by origin: for **internally-created** assets the version tracks *our* iteration; for
+  **externally-created** assets (vendored verbatim) it's an *internal tracking* field recording when we
+  re-vendor an upstream update — flag the external origin in the asset's `README`/catalogue entry and a
+  frontmatter comment.
 
 ## Working discipline — assumptions & documentation
 

@@ -2,6 +2,7 @@
 # Vendored from Everything Claude Code (ECC, MIT — affaan-m/ECC), verbatim, scanned on intake 2026-06-15.
 # Keeps ECC's prepended "Prompt Defense Baseline" block (kept deliberately as generic injection defense).
 name: silent-failure-hunter
+version: 1.0.0  # external (ECC) — tracks our re-vendor of upstream, not our own iteration
 description: Review code for silent failures, swallowed errors, bad fallbacks, and missing error propagation.
 model: sonnet
 tools: [Read, Grep, Glob, Bash]

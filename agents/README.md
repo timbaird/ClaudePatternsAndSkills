@@ -10,11 +10,17 @@ rules (which auto-fire), an agent is invoked explicitly via the Agent tool / a s
 
 ## Catalogue
 
-| Agent | Tools | Origin | Summary |
-|---|---|---|---|
-| [code-reviewer](code-reviewer.md) | Read/Grep/Glob/Bash | ECC (vendored) | Senior code-review specialist — confidence-gated findings (>80%), explicit false-positive list, security/quality/perf/React/Node checklists, "zero findings is a valid review." |
-| [silent-failure-hunter](silent-failure-hunter.md) | Read/Grep/Glob/Bash | ECC (vendored) | Hunts silent failures — empty catches, swallowed errors, dangerous fallbacks, lost stack traces, missing error propagation. Language-agnostic. |
-| [code-simplifier](code-simplifier.md) | Read/Write/Edit/Bash/Grep/Glob | ECC (vendored, **modified**) | Proposes behaviour-preserving simplifications of recently changed code (clarity, early returns, dead-code removal). **Modified from upstream**: presents before/after diffs, discusses, and applies only what you approve — never auto-edits. |
+| Agent | Version | Tools | Origin | Summary |
+|---|---|---|---|---|
+| [code-reviewer](code-reviewer.md) | 1.0.0¹ | Read/Grep/Glob/Bash | ECC (vendored) | Senior code-review specialist — confidence-gated findings (>80%), explicit false-positive list, security/quality/perf/React/Node checklists, "zero findings is a valid review." |
+| [silent-failure-hunter](silent-failure-hunter.md) | 1.0.0¹ | Read/Grep/Glob/Bash | ECC (vendored) | Hunts silent failures — empty catches, swallowed errors, dangerous fallbacks, lost stack traces, missing error propagation. Language-agnostic. |
+| [code-simplifier](code-simplifier.md) | 1.0.0¹ | Read/Write/Edit/Bash/Grep/Glob | ECC (vendored, **modified**) | Proposes behaviour-preserving simplifications of recently changed code (clarity, early returns, dead-code removal). **Modified from upstream**: presents before/after diffs, discusses, and applies only what you approve — never auto-edits. |
+| [doc-convention-auditor](doc-convention-auditor.md) | 1.0.0 | Read/Grep/Glob/Bash | Internal | Audits a project's documentation corpus against its own conventions — runs the `doc-convention-linter` for mechanical breaches, then applies judgment the linter can't (surface-fit, `CLAUDE.md`⇄`MEMORY` graduation, cross-ref quality, `doco-structure.md` adherence). Read-only; reports for a human. Pairs with the linter skill. |
+| [library-standards-auditor](library-standards-auditor.md) | 1.0.0 | Read/Grep/Glob/Bash | Internal | Audits a reusable library under `libraries/` against `library-standards.md` — runs the `library-standards-linter`, then adjudicates divergences (documented-and-justified vs undocumented gap), checks `CLAUDE.md` sections + the two required principles, README completeness, and reduced-set doc spirit. Structure/docs only (not the code). Read-only. Pairs with the linter skill. |
+
+¹ Externally-created agent — the version is an *internal tracking* field recording when we re-vendor the
+upstream, not our own iteration (intake noted in each agent's frontmatter comment). Internally-created
+agents use the version to track *our* iteration.
 
 ## Provenance & the "Prompt Defense Baseline" block
 

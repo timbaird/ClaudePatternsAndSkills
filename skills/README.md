@@ -12,6 +12,8 @@ own script, if any).
 
 | Skill | Version | Summary |
 |---|---|---|
+| [doc-convention-linter](doc-convention-linter/) | 1.0.0 | Deterministic linter for a project's documentation corpus — broken relative links, docs missing from their `INDEX`, orphaned/non-kebab/missing-H1/missing-summary docs, and "document what WAS" trigger phrases. Pairs with the `doc-convention-auditor` agent. **Internally created.** `python3`, stdlib only. |
+| [library-standards-linter](library-standards-linter/) | 1.0.0 | Deterministic linter checking reusable libraries under `libraries/` against `library-standards.md` — required files, src layout, naming, `pyproject` fields, `__version__`, SPDX headers, required `docs/`, no per-repo conventions meta-doc/memory. **Python/Evennia instance** (edit constants for other stacks). Pairs with the `library-standards-auditor` agent. **Internally created.** `python3` (3.11+). |
 | [humaniser](humaniser/) | 2.8.0¹ | Remove the tells of AI-generated writing (inflated significance, em-dash overuse, rule-of-three, AI vocabulary, filler, etc.) while preserving meaning and voice. **Externally created** (adapted from Siqi Chen's MIT `humanizer`), centralised here, vendored verbatim. |
 | [inspect-file-size](inspect-file-size/) | 1.0.0 | Report any file's (Office/`.pptx`/`.docx`/`.xlsx` or zip) size and exactly what's bloating it, and gate over a guideline — before committing to git. General-purpose. `python3`. |
 | [skill-creator](skill-creator/) | 1.0.0¹ | Create, edit, improve, and benchmark skills — the meta-skill for building the others. **Externally created** (Anthropic), centralised here; lightly trimmed of non-applicable environment guidance (see its README). |

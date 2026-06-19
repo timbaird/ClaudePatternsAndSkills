@@ -3,6 +3,7 @@
 # MODIFIED from upstream: added an approval gate — it presents proposed changes, discusses them, and
 # applies only what the human approves (never auto-applies). Keeps ECC's "Prompt Defense Baseline".
 name: code-simplifier
+version: 1.0.0  # external (ECC, modified) — tracks our re-vendor of upstream, not our own iteration
 description: Proposes behaviour-preserving simplifications of recently changed code (clarity, early returns, dead-code removal), presents them as before/after diffs for discussion, and applies only the changes the human approves — never edits without approval.
 model: sonnet
 tools: [Read, Write, Edit, Bash, Grep, Glob]
