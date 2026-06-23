@@ -1,0 +1,13 @@
+# Python build artefacts — regenerated on run, never committed.
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Per-skill virtualenvs (skill-dependencies convention) — machine-specific, recreated on install.
+.venv/
+
+# OS cruft.
+.DS_Store
+Thumbs.db
