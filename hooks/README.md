@@ -15,6 +15,7 @@ hook entry to `settings.json`.
 | Hook | Runtime | Summary |
 |---|---|---|
 | [ensure-repo-memory.mjs](ensure-repo-memory.mjs) | Node | Per-session preflight: points this repo's Claude auto-memory at `.claude/memory/` by setting `autoMemoryDirectory` in `settings.local.json` (idempotent self-heal). Used by the [memory-setup sub-pattern](../_patterns/_sub_patterns/memory-setup/memory-setup.md). |
+| [ensure-python.mjs](ensure-python.mjs) | Node | Per-session preflight: confirms a usable **Python 3** (≥3.9) is on PATH, since a project's Python skills depend on it. Silent on success; on a miss surfaces install guidance into the session (advisory, never blocks). Wired when a project carries a Python skill — see the [skill-dependencies convention](../_patterns/_sub_patterns/doco-setup/skill-dependencies.md) + [skill-vendoring](../_patterns/_sub_patterns/skill-vendoring/skill-vendoring.md). |
 
 ## Using a hook
 

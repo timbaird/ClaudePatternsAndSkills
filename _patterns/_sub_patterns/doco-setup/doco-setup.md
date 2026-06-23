@@ -1,8 +1,10 @@
 # Sub-pattern — Documentation setup
 
 A reusable recipe that establishes the standard **four-surface documentation structure** in a repo
-(`README.md`, `CLAUDE.md`, `MEMORY`, `docs/`) and drops the structure-explainer into `docs/` so the
-repo carries its own map.
+(`README.md`, `CLAUDE.md`, `MEMORY`, `docs/`) and drops the **standing convention docs** into `docs/`
+(the four-surface map *and* the skill-dependencies convention) so the repo carries its own map. It also
+ships the `ensure-python.mjs` runtime-preflight hook (unwired) so the skill-dependencies convention is
+self-consistent everywhere.
 
 > **Sub-pattern** = a composable building block referenced by full patterns, not used alone.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md), single-repo, etc.
@@ -29,28 +31,37 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 | `README.md` | human landing page | **this sub-pattern** (authored) |
 | `CLAUDE.md` | always-loaded agent operating rules (small, universal, imperative) | **this sub-pattern** (surface) + **project-discovery** (content) |
 | `MEMORY.md` + `.claude/memory/` | agent's accumulated durable knowledge (situational, declarative) | the **memory-setup** sub-pattern |
-| `docs/` (+ `INDEX.md`, `doco-structure.md`) | technical / knowledge wiki | **this sub-pattern** |
+| `docs/` (+ `INDEX.md`, `doco-structure.md`, `skill-dependencies.md`) | technical / knowledge wiki | **this sub-pattern** |
 
 ## Required assets — provisioning manifest
 
 | Asset | Type | Source | Destination |
 |---|---|---|---|
 | `doco-structure.md` | doc template (vendored **verbatim**) | [`doco-structure.md`](doco-structure.md) (beside this recipe) | `<REPO>/docs/doco-structure.md` |
+| `skill-dependencies.md` | doc template (vendored **verbatim**) | [`skill-dependencies.md`](skill-dependencies.md) (beside this recipe) | `<REPO>/docs/skill-dependencies.md` |
+| `ensure-python.mjs` | hook (vendored; **left unwired** here) | [`hooks/ensure-python.mjs`](../../../hooks/ensure-python.mjs) | `<REPO>/.claude/hooks/ensure-python.mjs` |
 | `docs/INDEX.md` | authored | — | `<REPO>/docs/INDEX.md` |
 | `README.md` | authored per the README surface | — (repo-specific) | `<REPO>/README.md` |
 | `CLAUDE.md` | authored per the CLAUDE.md surface | — (repo-specific) | `<REPO>/CLAUDE.md` |
 
-> Only `doco-structure.md` is copied verbatim — it's the generic explainer. `README.md` and
-> `CLAUDE.md` are **authored fresh per repo** (they're repo-specific); use the surface definitions in
-> `doco-structure.md` as the spec. `MEMORY` is **not** set up here — that's the memory-setup sibling.
+> `doco-structure.md` and `skill-dependencies.md` are copied **verbatim** — generic standing conventions
+> every repo carries. `README.md` and `CLAUDE.md` are **authored fresh per repo** (repo-specific); use
+> the surface definitions in `doco-structure.md` as the spec. `MEMORY` is **not** set up here — that's
+> the memory-setup sibling. The `ensure-python.mjs` hook ships so the skill-dependencies doc's reference
+> to it always resolves; it is **wired** into `settings.json` only when a Python skill is vendored (see
+> [skill-vendoring](../skill-vendoring/skill-vendoring.md)) — not here.
 
 ## Provisioning steps (ordered)
 
-1. **Create `docs/`** and copy **`doco-structure.md`** (verbatim, from beside this recipe) to
-   `<REPO>/docs/doco-structure.md` — the in-repo explainer of the four surfaces.
+1. **Create `docs/`** and copy the two standing convention docs (verbatim, from beside this recipe):
+   **`doco-structure.md`** (the four-surface explainer) and **`skill-dependencies.md`** (how a skill
+   declares third-party dependencies) → `<REPO>/docs/`. Also vendor the **`ensure-python.mjs`** hook to
+   `<REPO>/.claude/hooks/` (so `skill-dependencies.md`'s reference resolves) — **leave it unwired**;
+   skill-vendoring wires it if/when a Python skill arrives.
 2. **Create `docs/INDEX.md`** — the entry point listing every `docs/` document with a one-line
-   description. Seed it with the `doco-structure.md` entry. This index is **required reading** and is
-   surfaced by a pointer in `CLAUDE.md` (step 4) — it is *not* auto-loaded like `MEMORY.md`.
+   description. Seed it with the `doco-structure.md` **and** `skill-dependencies.md` entries. This index
+   is **required reading** and is surfaced by a pointer in `CLAUDE.md` (step 4) — it is *not* auto-loaded
+   like `MEMORY.md`.
 3. **Author `<REPO>/README.md`** to the README surface (what / why / status / how-to-try) — kept
    skim-friendly and repo-specific.
 4. **`CLAUDE.md` body** — establish the *surface/shape* here (small, imperative, pointers to `docs/` and
@@ -87,6 +98,7 @@ Full definitions + the `CLAUDE.md` ⇄ `MEMORY` split live in the **`doco-struct
 
 ## Why a vendored explainer + authored surfaces
 
-`doco-structure.md` is generic, so it's **vendored verbatim** — every repo carries the same map, and
-improving the master re-propagates by re-copying. `README` / `CLAUDE.md` are inherently repo-specific,
-so they're **authored** against that map rather than templated.
+`doco-structure.md` and `skill-dependencies.md` are generic standing conventions, so they're **vendored
+verbatim** — every repo carries the same map + the same dependency convention, and improving a master
+re-propagates by re-copying. `README` / `CLAUDE.md` are inherently repo-specific, so they're **authored**
+against that map rather than templated.

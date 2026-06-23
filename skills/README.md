@@ -19,12 +19,16 @@ own script, if any).
 | [skill-creator](skill-creator/) | 1.0.0¹ | Create, edit, improve, and benchmark skills — the meta-skill for building the others. **Externally created** (Anthropic), centralised here; lightly trimmed of non-applicable environment guidance (see its README). |
 | [skill-scout](skill-scout/) | 1.0.0¹ | Search existing local/marketplace/GitHub/web skill sources (and vet them) *before* building a new skill — pairs with `skill-creator`. **Externally created** (ECC, MIT), vendored verbatim. |
 | [search-first](search-first/) | 1.0.0¹ | Research-before-coding: search repo + npm/PyPI + MCP + GitHub for existing solutions, score them (maintenance/license/deps), and decide adopt/extend/build. The coding-side cousin of `skill-scout`. **Externally created** (ECC, MIT), vendored verbatim. |
+| [upscale-image](upscale-image/) | 1.0.0 | Deterministic Pillow image upscaler to an exact print-resolution size (Lanczos + cover-fit centre-crop + DPI stamp). **Dependency-carrying** — needs Pillow, so it's the canonical example of the [skill-dependencies convention](../docs/skill-dependencies.md) (per-skill gitignored `.venv/`). Internally created (KDP-factory), generalised + centralised here. |
 
 ¹ Externally-created skill — the version tracks *which upstream we vendored*, not our own iteration (for `skill-creator` the field was internally added; for `humaniser` it's upstream's own version). See each skill's README.
 
 ## Deploying a skill
 
 Copy the skill's folder into `<project>/.claude/skills/`. Each is self-contained — its engine (if
-it has one) lives inside its own folder, so there is no shared dependency to bring along.
+it has one) lives inside its own folder, so there is no shared dependency to bring along. A skill that
+needs a **third-party package** (e.g. `upscale-image` → Pillow) follows the
+[skill-dependencies convention](../docs/skill-dependencies.md): set up its per-skill `.venv/` on install
+and wire the `ensure-python.mjs` preflight (see [skill-vendoring](../_patterns/_sub_patterns/skill-vendoring/skill-vendoring.md)).
 
 *(Index reflects each skill's `SKILL.md` frontmatter — `name`, `description`, `version`.)*

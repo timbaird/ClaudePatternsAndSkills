@@ -59,10 +59,21 @@ this sub-pattern copies to the `<DEST>` it's given:
 
 3. **Place it** at the `<DEST>` for its scope (per the calling pattern's placement rule).
 
-4. **Check prerequisites.** If the skill bundles a runtime dependency — e.g. a **Python** script or a
-   **Node** helper — confirm the interpreter is available (`python3` / `python` / `py -3`;
-   `node --version`). If it's missing, **flag it / prompt to install** — don't silently assume it's
-   there. (Pure-instruction skills have no runtime to check.)
+4. **Check prerequisites + apply the dependency convention.** Confirm the skill's runtime is available
+   (`python3` / `python` / `py -3`; `node --version`); if missing, **flag it / prompt to install** —
+   don't silently assume it's there. (Pure-instruction / pure-stdlib skills have no third-party runtime
+   to set up.)
+   - **A skill that bundles a third-party Python package** (e.g. `upscale-image` needs Pillow) follows
+     the **skill-dependencies convention** (`docs/skill-dependencies.md`, vendored into every project by
+     [doco-setup](../doco-setup/doco-setup.md)): a committed `requirements.txt`, a per-skill **gitignored
+     `.venv/`**, a `try/except` import guard, and **venv-python** invocation. On first install, create
+     the `.venv/` and `pip install -r requirements.txt` — the `.venv/` is **never vendored** (recreated
+     per project).
+   - **Wire the Python preflight (once per project).** When vendoring the *first* Python-dependent skill,
+     wire the already-present `ensure-python.mjs` hook into `<REPO>/.claude/settings.json` —
+     `{ "type": "command", "command": "node .claude/hooks/ensure-python.mjs", "timeout": 15 }` under
+     `hooks.SessionStart`, **appended alongside** the memory hook (the array holds several). doco-setup
+     ships the hook file unwired; this is where it's activated.
 
 5. **Verify discovery.** Confirm the skill is recognised — it appears in the session's available
    skills and triggers on a representative prompt. A skill that's present but not discovered is usually
