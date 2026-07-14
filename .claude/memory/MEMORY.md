@@ -6,6 +6,8 @@ files hold the detail. Claude loads this index at session start and reads topic 
 
 - [memory hook is Node](memory-hook-is-node.md) — the portable-memory SessionStart hook is a Node `.mjs` (`node <file>` = identical cross-platform command).
 - [vendoring model](vendoring-model.md) — reusable assets are vendored (copied) into repos, not installed from a manifest; revisit at scale.
+- [library-inclusion bar](library-inclusion-bar.md) — a skill enters CPAS only with genuine cross-project reuse; generic-but-single-consumer stays in its project (split-narration, Tier-3 activity-* etc. left in kdp-factory).
+- [skills are parameterised, not forked](skills-parameterised-not-forked.md) — consolidate drifting variants into one parameterised skill (brand/config = data); don't split by platform when the variation is template+geometry (the thumbnail `--layout` decision).
 - [doc-discipline is universal](doc-discipline-universal.md) — universal discipline lives always-on in `CLAUDE.md`, not a `paths:`-scoped rule (those need a real "off" state, e.g. code).
 - [docs-surface conventions](docs-surface-conventions.md) — one `docs/` at the top level only (umbrella-only in multi-repo); `docs/INDEX.md` is required-reading via a `CLAUDE.md` pointer (not auto-loaded like MEMORY).
 - [skill-dependencies convention](skill-dependencies-convention.md) — third-party-dep skills carry a per-skill gitignored `.venv` (never vendored); the convention doc is vendored everywhere, the `ensure-python` hook ships everywhere but is wired only when a Python skill is present.

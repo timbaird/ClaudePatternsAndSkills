@@ -1,3 +1,17 @@
+---
+name: schedule-social
+version: 1.0.0
+description: |
+  Deterministic engine to schedule ONE social post via GHL (GoHighLevel) Social Planner — YouTube
+  Shorts / TikTok / Pinterest / Instagram Reels / Facebook Reels. Resolves the destination from the
+  channel's allowlist (a built-in composite-key guard: platform + native_id, never a display name),
+  uploads the media, builds the correct per-platform create-post payload, and schedules it. Config-driven
+  (distribution.yaml + .env PITs); pure, testable per-platform builders. Use when scheduling a social
+  post via GHL Social Planner.
+allowed-tools:
+  - Bash
+---
+
 # schedule-social
 
 The **deterministic engine** for scheduling ONE social post via **GHL (GoHighLevel) Social Planner** —
