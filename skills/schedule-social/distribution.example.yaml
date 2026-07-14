@@ -1,0 +1,44 @@
+# ── schedule-social config schema (example) ──────────────────────────────────
+# Non-secret GHL Social Planner config. Two committed files; the secrets (PITs) live in .env.
+# Copy the two blocks below to their real locations and fill in your ids. Nothing here is secret.
+
+# ============================================================================
+# FILE 1 — <repo-root>/distribution.yaml   (shared GHL settings)
+# ============================================================================
+ghl:
+  location_id: "<your GHL location id>"
+  # Optional; this is the default if omitted:
+  mcp_endpoint: "https://services.leadconnectorhq.com/mcp/anthropic/v2"
+  # Which .env var holds each Private Integration Token (the tokens themselves stay in .env):
+  read_pit_env: GHL_SOCIAL_READ_PIT
+  write_pit_env: GHL_SOCIAL_WRITE_PIT
+
+# ============================================================================
+# FILE 2 — <repo-root>/channels/<slug>/distribution.yaml   (this channel's ALLOWLIST)
+# ============================================================================
+# The `destinations` list IS the composite-key allowlist — one entry per (platform + account).
+# `native_id` is the platform's DURABLE id (e.g. a YouTube channel id "UC..."), never a GHL display name;
+# the guard resolves it to the live GHL account id at post time and refuses anything not listed.
+ghl_user_id: "<the GHL user id posts are attributed to>"
+destinations:
+  - platform: youtube
+    native_id: "<the channel's YouTube channel id, e.g. UC...>"
+    handle: "@your-channel"
+  - platform: tiktok
+    native_id: "<the TikTok account's native id>"
+    handle: "@your.channel"
+  - platform: pinterest
+    native_id: "<the Pinterest account's native id>"
+    handle: "@yourchannel"
+    boards:                       # board NAME -> board id (so --board can take a friendly name)
+      "My Board Name": "<board id>"
+  - platform: instagram
+    native_id: "<the IG professional account's native id>"
+    handle: "@your.channel"
+  - platform: facebook
+    native_id: "<the FB Page's native id>"
+    handle: "Your Page"
+
+# .env (gitignored) holds only the secrets:
+#   GHL_SOCIAL_READ_PIT=...
+#   GHL_SOCIAL_WRITE_PIT=...
