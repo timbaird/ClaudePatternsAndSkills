@@ -8,6 +8,7 @@ nothing security-relevant is authored freehand.
 > **Sub-pattern** = a composable building block referenced by full patterns, not used alone.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md),
 > [single-repo](../../single-repo/single-repo-setup.md). Sibling of
+> [baseline-includes](../baseline-includes/baseline-includes.md),
 > [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
 > [memory-setup](../memory-setup/memory-setup.md), [doco-setup](../doco-setup/doco-setup.md),
 > [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),

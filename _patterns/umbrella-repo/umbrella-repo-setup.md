@@ -191,14 +191,19 @@ the same way; rules auto-fire by their glob, with no `settings.json` wiring. (Se
 [rules/README.md](../../rules/README.md) for placement — rules load from the launch-dir root, so keep
 them at the umbrella and let the glob reach sub-repo files.)
 
-### Step 11 — Bring in existing reusable skills  ← run the sub-pattern
-Skills are **vendored** (committed per-repo), so a new project starts with an empty `.claude/skills/`.
-Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) to bring in the reusable
-skills the user wants — it asks which to vendor and where each source is, copies each **verbatim**
-(whole folder, every supporting file), checks any runtime prerequisites, and verifies discovery.
-Supply the **placement** per §4: cross-project / utility skills → `<UMBRELLA>/.claude/skills/`;
-repo-specific skills → that sub-repo's `.claude/skills/`. *(The Node memory hook is vendored by Step 5
-— no need to request it.)*
+### Step 11 — Baseline defaults + existing reusable skills  ← run the sub-patterns
+First, run [baseline-includes](../_sub_patterns/baseline-includes/baseline-includes.md) — it vendors
+the default assets **every** project gets (the `bro` skill + the `ELI5` output style, set as the active
+style in `settings.json`), all at the **umbrella root** (`<UMBRELLA>/.claude/` — output styles and
+settings load only from the launch dir). No asking; these are always-on.
+
+Then, skills are **vendored** (committed per-repo), so a new project starts with an otherwise empty
+`.claude/skills/`. Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) to bring
+in the **additional** reusable skills the user wants — it asks which to vendor and where each source is,
+copies each **verbatim** (whole folder, every supporting file), checks any runtime prerequisites, and
+verifies discovery. Supply the **placement** per §4: cross-project / utility skills →
+`<UMBRELLA>/.claude/skills/`; repo-specific skills → that sub-repo's `.claude/skills/`. *(The Node
+memory hook is vendored by Step 5 — no need to request it.)*
 
 ### Step 12 — Verify end-to-end, then commit (the single commit)
 - **Memory test:** put a unique marker line at the top of `.claude/memory/MEMORY.md`, open a

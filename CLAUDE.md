@@ -8,7 +8,8 @@ Assets here are **sources** — copied into projects — so treat changes as pub
   like `MEMORY`, so reading it is on you), and load the relevant doc before related work.
 - [README.md](README.md) — what the library is and its layout.
 - [docs/doco-structure.md](docs/doco-structure.md) — the four doc surfaces and the `CLAUDE.md`⇄`MEMORY` split.
-- Collection indexes: `skills/README.md`, `skill-packs/README.md`, `hooks/README.md`, and `_patterns/`.
+- Collection indexes: `skills/README.md`, `skill-packs/README.md`, `hooks/README.md`,
+  `output-styles/README.md`, and `_patterns/`.
 
 ## Load-bearing principles (apply to all work here)
 - **Patterns are recipes; sub-patterns are composable components.** A sub-pattern does its one job and

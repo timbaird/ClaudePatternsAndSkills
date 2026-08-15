@@ -12,6 +12,7 @@ own script, if any).
 
 | Skill | Version | Summary |
 |---|---|---|
+| [bro](bro/) | 1.0.0 | Re-explain the **previous assistant message** in much plainer language — for when a reply came out too dense/jargon-heavy/formal. Triggered by `/bro`; re-expresses (never re-answers), keeps every fact verbatim, matches the original's language. **Internally created.** Pure instruction, no dependencies. |
 | [doc-convention-linter](doc-convention-linter/) | 1.0.0 | Deterministic linter for a project's documentation corpus — broken relative links, docs missing from their `INDEX`, orphaned/non-kebab/missing-H1/missing-summary docs, and "document what WAS" trigger phrases. Pairs with the `doc-convention-auditor` agent. **Internally created.** `python3`, stdlib only. |
 | [library-standards-linter](library-standards-linter/) | 1.0.0 | Deterministic linter checking reusable libraries under `libraries/` against `library-standards.md` — required files, src layout, naming, `pyproject` fields, `__version__`, SPDX headers, required `docs/`, no per-repo conventions meta-doc/memory. **Python/Evennia instance** (edit constants for other stacks). Pairs with the `library-standards-auditor` agent. **Internally created.** `python3` (3.11+). |
 | [humaniser](humaniser/) | 2.8.0¹ | Remove the tells of AI-generated writing (inflated significance, em-dash overuse, rule-of-three, AI vocabulary, filler, etc.) while preserving meaning and voice. **Externally created** (adapted from Siqi Chen's MIT `humanizer`), centralised here, vendored verbatim. |

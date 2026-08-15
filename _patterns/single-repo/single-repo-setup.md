@@ -47,6 +47,7 @@ the repo root.
 | Settings | [settings-setup](../_sub_patterns/settings-setup/settings-setup.md) | git autonomy + permission model → merge a `settings/` template into `settings.json` |
 | Docs | [doco-setup](../_sub_patterns/doco-setup/doco-setup.md) | the four surfaces — `README.md`, `CLAUDE.md` *shape*, `MEMORY`, `docs/` |
 | Content | [project-discovery](../_sub_patterns/project-discovery/project-discovery.md) | interview → draft the `CLAUDE.md`/`README` summary + stamp universal discipline into `CLAUDE.md` |
+| Baseline | [baseline-includes](../_sub_patterns/baseline-includes/baseline-includes.md) | vendor the default assets every project gets — the `bro` skill + the `ELI5` output style (set active) |
 | Skills | [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) | vendor any reusable skills the user wants → `<REPO>/.claude/skills/` |
 | Rules | [`rules/coding-principles.md`](../../rules/coding-principles.md) | (optional) the standard coding-principles rule |
 
@@ -94,10 +95,13 @@ interview (seven dimensions, a "must-not-go-stale" summary, mandatory repeat-bac
 (assumptions / `[TBD]`, destructive-git approval) into the single `CLAUDE.md`. For an *existing*
 codebase, `codebase-onboarding` can analyse it first to seed the answers.
 
-### Step 7 — Skills + rules
-- Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) for any reusable skills
-  the user wants. **Placement is trivial here** — there's one repo, so everything goes to
-  `<REPO>/.claude/skills/`.
+### Step 7 — Baseline defaults, skills + rules
+- Run [baseline-includes](../_sub_patterns/baseline-includes/baseline-includes.md) **first** — it
+  vendors the default assets every project gets (the `bro` skill + the `ELI5` output style, set as the
+  active style in `settings.json`). No asking; these are always-on.
+- Run [skill-vendoring](../_sub_patterns/skill-vendoring/skill-vendoring.md) for any **additional**
+  reusable skills the user wants. **Placement is trivial here** — there's one repo, so everything goes
+  to `<REPO>/.claude/skills/`.
 - *(Optional)* vendor [`rules/coding-principles.md`](../../rules/coding-principles.md) into
   `<REPO>/.claude/rules/` — it auto-fires on code files via its `paths:` glob (no `settings.json`
   wiring).

@@ -7,6 +7,7 @@ each machine pointed at it automatically, every session.
 > **Sub-pattern** = a composable building block referenced by full patterns rather than used alone.
 > Referenced by: [umbrella-repo](../../umbrella-repo/umbrella-repo-setup.md) (and any single-repo
 > setup that wants portable memory). Sibling of
+> [baseline-includes](../baseline-includes/baseline-includes.md),
 > [dot-claude-setup](../dot-claude-setup/dot-claude-setup.md),
 > [doco-setup](../doco-setup/doco-setup.md),
 > [umbrella-claude-md-cascade](../umbrella-claude-md-cascade/umbrella-claude-md-cascade-setup.md),
